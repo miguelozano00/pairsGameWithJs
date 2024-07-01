@@ -82,8 +82,11 @@ export default class Game {
         }
     }
 
+    // Función para almacenar las cajas en localStorage
     storeInfo() {
+        // Se recorre el array de this.#boxes y se almacena en una nueva variable
         let arrayBoxesToLocalStorage = this.#boxes.map(box => {
+            // Se devuelve objetos con las claves-valor necesarias
             return {
                 'row': box.row,
                 'col': box.col,
@@ -93,6 +96,7 @@ export default class Game {
                 'open' : box.open,
             }
         });
+        // Se almacena el array de objetos en localStorage
         localStorage.setItem("boxes",JSON.stringify(arrayBoxesToLocalStorage))
     }
 
@@ -215,7 +219,6 @@ export default class Game {
     }
 
     resetGame() {
-        // this.#timer.stopTimer()
         localStorage.removeItem("cols")
         localStorage.removeItem("rows")
         localStorage.removeItem("boxes")
@@ -231,18 +234,22 @@ export default class Game {
             rowsUser = parseInt(localStorage.getItem("rows"))
             colsUser = parseInt(localStorage.getItem("cols"))
         }
+        // Si no hay claves almacenadas con el valor de las filas y las columnas, se le pide al usuario
         else {
             rowsUser = parseInt(prompt("Enter the number of rows you want on the game board: "))
             colsUser = parseInt(prompt("Enter the number of columns you want on the game board: "))
+            // Si el número total de cajas elegido por el usuario es impar, se vuelve a preguntar. El total de cajas debe ser para para poder dividir por parejas
             while ((rowsUser * colsUser) % 2 !== 0 || (rowsUser * colsUser) === 0) {
                 alert("Please enter values ​​so that the total number of cells must be different than 0 and even.")
                 rowsUser = parseInt(prompt("Enter the number of rows you want on the game board: "))
                 colsUser = parseInt(prompt("Enter the number of columns you want on the game board: "))
             }
+            // Se almacenan los valores de filas y columnas en localStorage
             localStorage.setItem("rows", rowsUser)
             localStorage.setItem("cols", colsUser)
         }
 
+        // Se devuelven los valores
         return {
             rows: rowsUser,
             cols: colsUser,
