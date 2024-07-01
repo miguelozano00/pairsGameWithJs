@@ -1,0 +1,33 @@
+section#board {
+    background-color: grey;
+    position: relative;
+    display: grid;
+    // grid-template-columns: repeat(6, 1fr);
+    column-gap: 10px;
+    row-gap: 10px;
+    justify-content: center;
+    padding: 30px;
+}
+
+.timerControl {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.timer {
+    background-color: blue;
+}
+
+div.box {
+    /* width: 100px; */
+    height: 80px;
+    border: 2px solid black;
+    display: inline;
+    position: relative;
+    background-color: black;
+
+}
+
+article#timer {
+    margin-bottom: 10px;
+}
